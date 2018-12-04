@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_102638) do
+ActiveRecord::Schema.define(version: 2018_12_04_142017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "flat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_id"], name: "index_favorites_on_flat_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "flats", force: :cascade do |t|
+    t.string "address"
+    t.string "city"
+    t.string "zipcode"
+    t.string "full_address"
+    t.string "surface_housing"
+    t.string "surface_ground"
+    t.string "nb_rooms"
+    t.string "nb_bedrooms"
+    t.string "price"
+    t.string "buy_rent"
+    t.text "[:photos]"
+    t.text "description"
+    t.string "furnished"
+    t.string "type_advert"
+    t.string "website_source"
+    t.string "ad_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string "search_url"
+    t.boolean "mail_alert"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_searches_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +66,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_102638) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "flats"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "searches", "users"
 end
