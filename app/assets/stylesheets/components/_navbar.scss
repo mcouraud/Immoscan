@@ -12,7 +12,17 @@
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 40px;
+}
+
+.navbar-wagon-brand p {
+  position: absolute;
+  left: 10.5vh;
+  top: 4.5vh;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  color: #E0442C;
 }
 
 /* User Avatar */
@@ -37,11 +47,11 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #3A4247;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: #E0442C;
   text-decoration: none;
 }
 
