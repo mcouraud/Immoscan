@@ -10,8 +10,8 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Rechercher", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mes favoris", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Rechercher", "search_index_path", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mes favoris", "flat_favorite_index_path", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mes alertes", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
@@ -39,8 +39,8 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to "Rechercher", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mes favoris", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Rechercher", "search_index_path", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mes favoris", "flat_favorite_index_path", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mes alertes", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
