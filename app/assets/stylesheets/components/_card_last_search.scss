@@ -1,0 +1,85 @@
+.container {
+  width: 359px;
+  height: 232px;
+  background-color: #F9F8F8;
+  border-radius: 5px;
+
+}
+
+.card_alerte_body {
+  width: 100%;
+  height: 80%;
+}
+
+.colon-left{
+  color:#3A4247;
+  font-size: 18px;
+}
+
+.colon_right{
+  text-align: right;
+  color: #E0442C;
+  font-size: 18px;
+}
+
+.card_alerte_title {
+  font-size:22px;
+  color-font:#3A4247;
+}
+
+.card_alerte_footer {
+  display:flex;
+  flex-direction: row;
+}
+
+.pencil {
+  background-image: url("pencil-grey.svg");
+  background-repeat: no-repeat;
+
+  padding: 15px;
+  display:inline-block;
+  // position: relative;
+}
+
+.pencil:hover {
+  background-image: url("pencil-red.svg");
+  background-repeat: no-repeat;
+
+  padding: 15px;
+  display:inline-block;
+  position: relative;
+}
+
+.trash {
+  background-image: url("trash-grey.svg");
+  background-repeat: no-repeat;
+  padding: 15px;
+  display:inline-block;
+
+}
+
+.trash:hover {
+  background-image: url("trash-red.svg");
+  padding: 15px;
+  display:inline-block;
+}
+
+
+.btn-red {
+  color: #F9F8F8 !important;
+  background-color: #E0442C;
+  padding : 15px;
+  border-radius: 8px;
+  height:33px;
+  width:130px;
+  margin-left: 20%;
+  display: flex;
+  align-items: center;
+  margin-right: 30%;
+  text-align: middle;
+}
+
+.btn-red:hover {
+  text-decoration: none;
+  background-color: #9c2f1e;
+}
