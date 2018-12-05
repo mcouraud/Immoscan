@@ -3,6 +3,5 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    redirect_to flats_path(params...)
   end
 end
