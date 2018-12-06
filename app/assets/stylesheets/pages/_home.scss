@@ -25,7 +25,7 @@ h1 {
   color: #F9F8F8;
 }
 
-.last_searches {
+.home_elements {
 border-left: 2px solid #D3CFD5;
     padding-left: 3px;
 
@@ -55,14 +55,23 @@ li {
   font-size: 32px;
   color: #F9F8F8;
   margin-left:-10px;
+  padding-bottom: 30px;
 
 }
-.last_searches {
 
-}
 
 .cards_last_searches {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.titre2_homepage_gris {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 32px;
+  color: #3A4247;
+  margin-left:-10px;
+  padding-bottom: 30px;
+  padding-top: 40px;
 }
