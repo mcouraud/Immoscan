@@ -10,7 +10,7 @@ class CreateFlats < ActiveRecord::Migration[5.2]
       t.string :nb_rooms
       t.string :nb_bedrooms
       t.string :price
-      t.string :buy_rent
+      t.string :rent_or_buy
       t.text Array :photos
       t.text :description
       t.string :furnished
