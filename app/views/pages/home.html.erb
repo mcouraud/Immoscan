@@ -1,31 +1,120 @@
-
-  <%= form_tag flats_path, method: :get do %>
-     <div class="checkbox">
-      <input id="check" type="radio" name="rent_or_buy" value="louer" class="hidden" CHECKED>
-      <label for="check"> LOUER </label>
+<!-- <div class="container"> -->
+<div class="row">
+  <div class ="background_home">
+    <div class="banner-content col-xs-6 col-lg-12">
+      <h1>Recherchez sur des dizaines de sites immobiliers à la fois</h1>
     </div>
-    <div class="checkbox">
-      <input id="check2" type="radio" name="rent_or_buy" value="acheter" class="hidden">
-      <label for="check2"> ACHETER </label>
+    <div class = "container barre_recherche">
+      <%= form_tag flats_path, method: :get do %>
+      <div class = "row choix_action">
+        <div class="checkbox">
+          <input id="check" type="radio" name="rent_or_buy" value="louer" class="hidden" CHECKED>
+          <label for="check"> LOUER </label>
+        </div>
+        <div class="checkbox">
+          <input id="check2" type="radio" name="rent_or_buy" value="acheter" class="hidden">
+          <label for="check2"> ACHETER </label>
+        </div>
+      </div>
+      <div class = "row input_searches">
+        <%= text_field_tag :city,
+        params[:city],
+        class: "form-control",
+        placeholder: "Localisation"
+        %>
+        <%= text_field_tag :price,
+        params[:price],
+        class: "form-control",
+        placeholder: "Budget Maximum"
+        %>
+        <%= text_field_tag :nb_rooms,
+        params[:nb_rooms],
+        class: "form-control",
+        placeholder: "Nombre de pièces"
+        %>
+        <%= submit_tag "Rechercher",  class: "btn-green btn_barre_recherche" %>
+        <% end %>
+      </div>
     </div>
-    <span>
-    <%= text_field_tag :city,
-      params[:city],
-      class: "form-control",
-      placeholder: "Localisation"
-    %>
-    <%= text_field_tag :price,
-      params[:price],
-      class: "form-control",
-      placeholder: "Budget Maximum"
-    %>
-    <%= text_field_tag :nb_rooms,
-      params[:nb_rooms],
-      class: "form-control",
-      placeholder: "Nombre de pièces"
-    %>
-    <%= submit_tag "Rechercher",  class: "btn-green" %>
-    </span>
-  <% end %>
-
-
+  </div>
+  <div class="container home_elements">
+    <ul>
+      <div class="row titre_last_searches">
+        <li class="titre2_homepage">Mes dernières recherches</li>
+      </div>
+      <div class="row cards_last_searches">
+        <div class="card_last_search col-sm-4">
+          <table class="card_alerte_body">
+            <tr>
+              <td><h5 class="card_alerte_title">Location Paris 15eme</h5> </td>
+              <td class="colon_right"><%= image_tag "bell-53.svg" %> </td>
+            </tr>
+            <tr>
+              <td class="colon-left"><p> Budget Max :</p> </td>
+              <td class="colon_right"> <p> 1500 € </p> </td>
+            </tr>
+            <tr>
+              <td class="colon-left"> <p> Nombre de pièces :</p> </td>
+              <td class="colon_right"> <p> 3 </p> </td </tr>
+            </table>
+            <div class="card_alerte_footer">
+              <a href="" class="btn-red btn-red-last_search">
+                <div class="text-recherche"> Rechercher </div>
+              </a>
+            </div>
+          </div>
+          <div class="card_last_search col-sm-4">
+            <table class="card_alerte_body">
+              <tr>
+                <td><h5 class="card_alerte_title">Location Paris 15eme</h5> </td>
+                <td class="colon_right"><%= image_tag "bell-53.svg" %> </td>
+              </tr>
+              <tr>
+                <td class="colon-left"><p> Budget Max :</p> </td>
+                <td class="colon_right"> <p> 1500 € </p> </td>
+              </tr>
+              <tr>
+                <td class="colon-left"> <p> Nombre de pièces :</p> </td>
+                <td class="colon_right"> <p> 3 </p> </td </tr>
+              </table>
+              <div class="card_alerte_footer">
+                <a href="" class="btn-red btn-red-last_search">
+                  <div class="text-recherche"> Rechercher </div>
+                </a>
+              </div>
+            </div>
+            <div class="card_last_search col-sm-4">
+              <table class="card_alerte_body">
+                <tr>
+                  <td><h5 class="card_alerte_title">Location Paris 15eme</h5> </td>
+                  <td class="colon_right"><%= image_tag "bell-53.svg" %> </td>
+                </tr>
+                <tr>
+                  <td class="colon-left"><p> Budget Max :</p> </td>
+                  <td class="colon_right"> <p> 1500 € </p> </td>
+                </tr>
+                <tr>
+                  <td class="colon-left"> <p> Nombre de pièces :</p> </td>
+                  <td class="colon_right"> <p> 3 </p> </td </tr>
+                </table>
+                <div class="card_alerte_footer">
+                  <a href="" class="btn-red btn-red-last_search">
+                    <div class="text-recherche"> Rechercher </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="row titre_contenu">
+              <li class="titre2_homepage_gris">Contenu</li>
+            </div>
+            <p> Sed si ille hac tam eximia fortuna propter utilitatem rei publicae frui non properat, ut omnia illa conficiat, quid ego, senator, facere debeo, quem, etiamsi ille aliud vellet, rei publicae consulere oporteret?</p>
+            <div class="row titre_contenu">
+              <li class="titre2_homepage_gris"> Nos annonces immobilières proviennent des sites les plus reconnus </li>
+              <img class="logos_scrap" src="/assets/pap.png" alt="pap">
+              <img class="logos_scrap" src="/assets/seloger.png" alt="seloger">
+              <img class="logos_scrap" src="/assets/logicimmo" alt="logicimmo">
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
