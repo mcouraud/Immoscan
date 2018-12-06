@@ -1,10 +1,11 @@
-require 'open-uri'
-require 'nokogiri'
-require 'json'
-require 'active_support/all'
+    require 'open-uri'
+    require 'nokogiri'
+    require 'json'
+    require 'active_support/all'
 
-module ApplicationHelper
-  def scraping_pap
+module ScrapingHelper < ApplicationHelper
+
+def scraping_pap
 
     city_id = []
     city_string = []
