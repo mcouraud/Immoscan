@@ -1,26 +1,25 @@
-<div class="container">
 
   <%= form_tag flats_path, method: :get do %>
      <div class="checkbox">
-      <input id="check" type="checkbox" name="louer_query" value="louer" class="hidden">
+      <input id="check" type="radio" name="rent_or_buy" value="louer" class="hidden" CHECKED>
       <label for="check"> LOUER </label>
     </div>
     <div class="checkbox">
-      <input id="check2" type="checkbox" name="acheter_query" value="Acheter" class="hidden">
+      <input id="check2" type="radio" name="rent_or_buy" value="acheter" class="hidden">
       <label for="check2"> ACHETER </label>
     </div>
     <span>
-    <%= text_field_tag :city_query,
+    <%= text_field_tag :city,
       params[:city],
       class: "form-control",
       placeholder: "Localisation"
     %>
-    <%= text_field_tag :price_query,
+    <%= text_field_tag :price,
       params[:price],
       class: "form-control",
       placeholder: "Budget Maximum"
     %>
-    <%= text_field_tag :nb_rooms_query,
+    <%= text_field_tag :nb_rooms,
       params[:nb_rooms],
       class: "form-control",
       placeholder: "Nombre de pièces"
@@ -29,4 +28,4 @@
     </span>
   <% end %>
 
-</div>
+
