@@ -20,17 +20,53 @@ h1 {
   width: 1062px;
   height: 144px;
   left: 194px;
-  top: 140px;
+  top: 115px;
   text-align: center;
   color: #F9F8F8;
+
 }
 
 .home_elements {
 border-left: 2px solid #D3CFD5;
     padding-left: 3px;
+}
+
+.barre_recherche {
+position: absolute;
+width: 1220px;
+height: 129px;
+left: 109px;
+top: 400px;
+}
+
+.checkbox {
+  margin : 6px;
+}
+.choix_action {
+  display:flex;
+  flex-direction: row;
 
 }
 
+.input_searches {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-control {
+  border-radius:8px;
+  padding: 4px;
+  margin: 4px;
+  background-color: #F9F8F8;
+  background: rgba(249, 248, 248, 0.9);
+  height:56px;
+}
+
+.btn_barre_recherche {
+  height:56px;
+  margin-left:4px;
+}
 
 //ul{list-style: none;}
 
@@ -66,6 +102,10 @@ li {
   justify-content: space-around;
 }
 
+.btn-red-last_search {
+margin-left:30%;
+}
+
 .titre2_homepage_gris {
   font-family: "Montserrat";
   font-weight: 400;
@@ -74,4 +114,8 @@ li {
   margin-left:-10px;
   padding-bottom: 30px;
   padding-top: 40px;
+}
+
+.logos_scrap {
+height: 100px;
 }

@@ -3,6 +3,7 @@
   height: 232px;
   background-color: #F9F8F8;
   border-radius: 5px;
+  padding-bottom:15px;
 }
 
 
@@ -62,24 +63,4 @@
   background-image: url("trash-red.svg");
   padding: 15px;
   display:inline-block;
-}
-
-
-.btn-red {
-  color: #F9F8F8 !important;
-  background-color: #E0442C;
-  padding : 15px;
-  border-radius: 8px;
-  height:33px;
-  width:130px;
-  margin-left: 20%;
-  display: flex;
-  align-items: center;
-  margin-right: 30%;
-  text-align: middle;
-}
-
-.btn-red:hover {
-  text-decoration: none;
-  background-color: #9c2f1e;
 }
