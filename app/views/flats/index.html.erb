@@ -1,8 +1,26 @@
-<div class="container">
-  <h2 class="text-center"> <%= @flats.count %> résultats à <%= params[:city] %></h2>
+<h2> <%= @flats.count %> résultats</h2>
 
-  <% @flats.each do |flat| %>
-  <p> <%= flat.ad_url %> | <%= flat.price %>€/mois | T<%= flat.nb_rooms %></p>
-  <% end %>
+<% @flats.each do |flat| %>
 
-</div>
+  <div class="card">
+    <div class="card-picture" style="background-image: url('<%= flat.photos.first %>')"> <a class="white-circle margin-left-10"> <span class="heart"> </span> </a>
+    </div>
+    <div class="card-informations">
+      <div class="card-title">
+        <p> Appartement à <%= flat.city %> | <%= flat.zipcode %></p>
+      </div class="infos">
+      <div>
+        <p> T<%=flat.nb_rooms%> | <%=flat.surface_ground%>m2 </p>
+      </div>
+      <div class="price">
+        <p> <%=flat.price%>€ </p>
+      </div>
+      <div class="centered-bottom">
+        <a class="btn-green" href="<%= flat.ad_url %>" target="_blank"> Découvrir</a>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+

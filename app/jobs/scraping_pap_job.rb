@@ -100,7 +100,7 @@ class ScrapingPapJob < ApplicationJob
     pap_annonce_total = pap_flat_city.zip( pap_flat_zipcode, pap_flat_price, pap_flat_nb_piece, pap_flat_nb_chambre, pap_flat_nb_metre_carre, pap_flat_photo_url, pap_flat_description, pap_flat_item_date, url_flat)
 
     pap_annonce_total.each_with_index do |flat, index|
-      Flat.create!( city: flat[0].to_s, zipcode: flat[1], rent_or_buy: params[:rent_or_buy], price: flat[2].to_i, nb_rooms: flat[3].to_i, nb_bedrooms: flat[4].to_i, surface_ground: flat[5].to_i, [:photos] => flat[6], description: flat[7], ad_url: "https://www.pap.fr#{url_flat[index]}")
+      Flat.create!( city: flat[0].to_s, zipcode: flat[1], rent_or_buy: params[:rent_or_buy], price: flat[2].to_i, nb_rooms: flat[3].to_i, nb_bedrooms: flat[4].to_i, surface_ground: flat[5].to_i, :photos => [flat[6]], description: flat[7], ad_url: "https://www.pap.fr#{url_flat[index]}")
     end
   end
 end

@@ -6,8 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-# p flat_nb_pieces.children[1].children.children.to_s
-# p flat_nb_pieces.children.class_name
-
 Flat.destroy_all
