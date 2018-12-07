@@ -1,9 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'dbf'
+
+
+data = File.open('public/france2016.dbf')
+widgets = DBF::Table.new(data)
+
+widgets.each do |record|
+  City.new(name: "#{record['NCC']}", ci:"#{record['DEP']}0#{record['COM']}")
+end
 
 Flat.destroy_all
