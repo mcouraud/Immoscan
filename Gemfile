@@ -9,6 +9,8 @@ gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
 gem 'dbf'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
