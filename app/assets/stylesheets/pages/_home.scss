@@ -1,1 +1,103 @@
-// Specific CSS for your home-page
+
+.background_home {
+  background-image: url("background_home.png");
+  box-shadow: inset 0px 800px 250px rgba(0, 0, 0, 0.4);
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  height: 110vh;
+  width: 100%;
+  margin-bottom: -30vh;
+}
+
+
+h1 {
+  margin: 0px;
+  padding-top: 100px;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 64px;
+  text-align: center;
+  color: #F9F8F8;
+
+}
+
+.barre_recherche {
+  padding-top: 50px;
+}
+
+.home_elements {
+  border-left: 2px solid #D3CFD5;
+  padding-left: 3px;
+}
+
+
+.checkbox {
+  margin : 6px;
+}
+.choix_action {
+  display:flex;
+  flex-direction: row;
+
+}
+
+.input_searches {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-control {
+  border-radius:8px;
+  padding: 4px;
+  margin: 4px;
+  background-color: #F9F8F8;
+  background: rgba(249, 248, 248, 0.9);
+  height:56px;
+}
+
+.btn_barre_recherche {
+  height:56px;
+  margin-left:4px;
+}
+
+li {
+  font-size:100%;
+  display:list-item;
+  list-style-image: url(puce_red.svg);
+}
+
+.titre2_homepage {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 32px;
+  color: #F9F8F8;
+  margin-left:-10px;
+  padding-bottom: 30px;
+
+}
+
+
+.cards_last_searches {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn-red-last_search {
+  margin-left:30%;
+}
+
+.titre2_homepage_gris {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 32px;
+  color: #3A4247;
+  margin-left:-10px;
+  padding-bottom: 30px;
+  padding-top: 40px;
+}
+
+.logos_scrap {
+height: 100px;
+}

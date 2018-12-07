@@ -1,11 +1,12 @@
-require 'open-uri'
-require 'nokogiri'
-require 'json'
-require 'active_support/all'
+  require 'open-uri'
+  require 'nokogiri'
+  require 'json'
+  require 'active_support/all'
 
-module ApplicationHelper
-  def scraping_pap
+class ScrapingPapJob < ApplicationJob
+  # queue_as :default
 
+  def perform(params)
     city_id = []
     city_string = []
     flat_annonce_url = []
@@ -22,13 +23,13 @@ module ApplicationHelper
     pap_flat_description = []
     pap_flat_item_date = []
 
-    puts 'dans quelle ville cherchez vous ?'
+    ville = params[:city]
 
-    ville = gets.chomp
-
-    puts "'vente', 'locations' (tapez exactement un des choix) ?"
-
-    achat_ou_location = gets.chomp
+    if params[:rent_or_buy] == "louer"
+      achat_ou_location = "locations"
+    else
+      achat_ou_location = "vente"
+    end
 
     url_json = "https://www.pap.fr/json/ac-geo?q=#{ville}"
     json = open(url_json).read
@@ -45,42 +46,42 @@ module ApplicationHelper
     html_doc_recup_annonce = Nokogiri::HTML(html_file_recup_annonce)
 
     html_doc_recup_annonce.search('.search-list-item')[0..5].each do |element|
-      flat_annonce_url << element.children.children.children.children[14].attribute('href').value
+      flat_annonce_url << element.search('.item-content').search('.item-title').attribute('href').value
     end
 
-    flat_annonce_url[0..20].uniq.each do |url|
+    flat_annonce_url.uniq.each_with_index do |url, index|
       url_flat << url
 
-      url_scrapping_flat = "https://www.pap.fr#{url_flat.last}"
+      url_scrapping_flat = "https://www.pap.fr#{url_flat[index]}"
 
       html_file_flat = open(url_scrapping_flat).read
       html_doc_flat = Nokogiri::HTML(html_file_flat)
 
       html_doc_flat.search('.item-description').each do |element|
-        pap_flat_city  << element.children[3].text
+        pap_flat_city  << element.children[3].text.split(' ').first
+      end
+
+      html_doc_flat.search('.item-description h2').each do |element|
+        pap_flat_zipcode  << element.text.split(' ').last.remove(')').remove('(')
       end
 
       html_doc_flat.search('.item-price').each do |element|
-        pap_flat_price << element.text
+        pap_flat_price << element.text.remove('.').remove('€')
       end
 
       # html_doc_flat.search('.item-price').each do |element|
       # pap_flat_address = [] << element.text
 
-
-      # html_doc_flat.search('.item-price').each do |element|
-      #   pap_flat_zipcode = [] << element.text  end
-
-      html_doc_flat.search('.item-tags').each do |element|
-        pap_flat_nb_metre_carre << element.children[5].text
+      html_doc_flat.search('.item-tags li:last-child').each do |element|
+        pap_flat_nb_metre_carre << element.text.remove('m²')
       end
 
       html_doc_flat.search('.item-tags').each do |element|
-        pap_flat_nb_piece << element.children[1].text
+        pap_flat_nb_piece << element.children[1].text.remove('pièce')
       end
 
       html_doc_flat.search('.item-tags').each do |element|
-        pap_flat_nb_chambre << element.children[3].text
+        pap_flat_nb_chambre << element.children[3].text.remove('chambre')
       end
 
       html_doc_flat.search('.img-liquid').each do |element|
@@ -93,13 +94,13 @@ module ApplicationHelper
 
       html_doc_flat.search('.item-date').each do |element|
         pap_flat_item_date << element.text
+      end
+    end
+
+    pap_annonce_total = pap_flat_city.zip( pap_flat_zipcode, pap_flat_price, pap_flat_nb_piece, pap_flat_nb_chambre, pap_flat_nb_metre_carre, pap_flat_photo_url, pap_flat_description, pap_flat_item_date, url_flat)
+
+    pap_annonce_total.each_with_index do |flat, index|
+      Flat.create!( city: flat[0].to_s, zipcode: flat[1], rent_or_buy: params[:rent_or_buy], price: flat[2].to_i, nb_rooms: flat[3].to_i, nb_bedrooms: flat[4].to_i, surface_ground: flat[5].to_i, :photos => [flat[6]], description: flat[7], ad_url: "https://www.pap.fr#{url_flat[index]}")
     end
   end
-
-  pap_annonce_total = pap_flat_city.zip(pap_flat_price, pap_flat_nb_piece, pap_flat_nb_chambre, pap_flat_nb_metre_carre, pap_flat_photo_url, pap_flat_description, pap_flat_item_date)
-
-  pap_annonce_total.each do |element|
-    puts element
-  end
-end
 end

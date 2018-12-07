@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2018_12_07_100259) do
     t.integer "nb_rooms"
     t.integer "nb_bedrooms"
     t.integer "price"
-    t.string "buy_rent"
-    t.text "[:photos]"
+    t.string "rent_or_buy"
+    t.text "photos", default: [], array: true
     t.text "description"
     t.string "furnished"
     t.string "type_advert"
