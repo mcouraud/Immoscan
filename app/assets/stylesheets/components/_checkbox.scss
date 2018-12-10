@@ -23,17 +23,18 @@ label:before {
   top: 5px;
   height: 15px;
   width: 15px;
+  background:$white;
   margin-right: 10px;
   border-radius: 80%;
   box-shadow: 0px 1px 0 0 rgba(0, 0, 0, .2);
   box-sizing: border-box;
-  border: 7px solid #F9F8F8;
+  border: 1px solid $gray;
   transition: border .3s ease;
 }
 
 input:checked + label:before {
-  border-color: #F9F8F8;
-  border-width: 3px;
+  border-color: $gray;
+  border-width: 1px;
   background: #E0442C;
 }
 /*input + label {
