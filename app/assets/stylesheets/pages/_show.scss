@@ -1,4 +1,4 @@
-.titre_show {
+/*.titre_show {
 font-family: 'Fira Sans', sans-serif;
 font-weight: 400;
 font-size: 40px;
@@ -8,8 +8,9 @@ padding-top: 50px;
 }
 .result {
 height : 550px;
-width : 1220px;
+width : 100%;
 }
+
 .result_show {
 display:flex;
 flex-direction: column;
@@ -82,15 +83,18 @@ background-color: #FAEDEB;
   top: 4px;
   left: 2px;
 }
+
 .btn-transparent-grey {
 width: 152px;
 left: 150px;
 top: 200px;
 }
+
 .infos_principales_show {
 font-size:32px;
 color: #E0442C;
 }
+
 .nbre_chambres_show {
 color: #3A4247;
 font-size: 24px;
@@ -131,3 +135,4 @@ height: 600px;
 display: flex;
 justify-content:center;
 margin:0 auto !important;}
+*/

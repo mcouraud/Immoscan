@@ -80,12 +80,18 @@
     <% myCarousel = "myCarousel#{index.to_s}" %>
     <% myCarousel_href = "#myCarousel#{index.to_s}" %>
     <%= link_to flat_favorites_path(flat), class: "white-circle margin-left-10", method: :post  do %>
-      <span class="<% current_user.favorites.each do |f| %>
-          <%if f.flat == flat %>
-          <%= 'full-heart' %>
-          <% else %>
-          <%= 'empty-heart' %>
+      <span class= "<% if user_signed_in? && current_user.favorites.count == 0 %>
+          <%= "empty-heart" %>
+          <% elsif user_signed_in? %>
+          <% current_user.favorites.each do |f| %>
+            <% if f.flat == flat %>
+            <%= "full-heart" %>
+            <% else %>
+            <%= "empty-heart" %>
+            <% end %>
           <% end %>
+          <% else %>
+          <%= "empty-heart" %>
         <% end %>">
       </span>
     <% end %>
