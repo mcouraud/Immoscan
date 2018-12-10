@@ -1,18 +1,15 @@
 
 .background_home {
-  background-image: url("background_home.png");
-  box-shadow: inset 0px 800px 250px rgba(0, 0, 0, 0.4);
+  background-image: url("background-home.jpg");
   background-repeat: no-repeat;
-  background-size: cover !important;
-  height: 110vh;
-  width: 100%;
-  margin-bottom: -30vh;
+  background-size: cover;
+  padding: 80px 0px;
+  padding-bottom: 400px;
 }
 
 
 h1 {
   margin: 0px;
-  padding-top: 100px;
   font-family: 'Fira Sans', sans-serif;
   font-weight: 600;
   font-style: italic;
@@ -28,17 +25,17 @@ h1 {
 
 .home_elements {
   border-left: 2px solid #D3CFD5;
-  padding-left: 3px;
+  padding: 3px;
+  margin-top: -250px;
 }
-
 
 .checkbox {
   margin : 6px;
 }
+
 .choix_action {
   display:flex;
   flex-direction: row;
-
 }
 
 .input_searches {
@@ -48,7 +45,7 @@ h1 {
 }
 
 .form-control {
-  border-radius:8px;
+  border-radius: 8px;
   padding: 4px;
   margin: 4px;
   background-color: #F9F8F8;
@@ -76,7 +73,6 @@ li {
   padding-bottom: 30px;
 
 }
-
 
 .cards_last_searches {
   display: flex;
