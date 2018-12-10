@@ -49,10 +49,12 @@ class SelogerJob < ApplicationJob
         flat_nb_piece << item.at_xpath(".//nbPiece").to_s.gsub(/<[a-zA-Z\/][^>]*>/, '')
         flat_nb_chambre << item.at_xpath(".//nbChambre").to_s.gsub(/<[a-zA-Z\/][^>]*>/, '')
         item.xpath(".//photos").each do |photo|
-          flat_photo_url << photo.xpath(".//photo/stdUrl").to_s.gsub(/<[a-zA-Z\/][^>]*>/, '').split('https://').reject { |item| item.nil? || item == '' }
+          flat_photo_url << photo.xpath(".//photo/stdUrl").to_s.gsub(/<[a-zA-Z\/][^>]*>/, ' ').split(' ').reject { |item| item.nil? || item == '' }
+
         end
       end
       baseUrl = pageSuivante
+
     annonce_total = flat_city.zip(flat_zipcode, flat_price, flat_nb_piece, flat_nb_chambre, flat_nb_metre_carre, flat_photo_url, flat_description, flat_url)
 
     annonce_total.each_with_index do |flat, index|
@@ -71,8 +73,6 @@ class SelogerJob < ApplicationJob
         element.save!
       end
       end
-    # flat = annonce_total.first
-    # Flat.create!(rent_or_buy: params[:rent_or_buy,city: flat[0],zipcode: flat[1], price: flat[2], nb_rooms: flat[3], nb_bedrooms: flat[4], surface_housing: flat[5], photos: flat[6], description: flat[7], ad_url: flat[8] )
     end
   end
 end
