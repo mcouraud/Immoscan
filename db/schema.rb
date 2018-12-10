@@ -1,4 +1,4 @@
-aq# This file is auto-generated from the current state of the database. Instead
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2018_12_07_102535) do
     t.integer "nb_rooms"
     t.integer "nb_bedrooms"
     t.integer "price"
-    t.string "buy_rent"
-    t.text "[:photos]"
+    t.string "rent_or_buy"
+    t.text "photos", default: [], array: true
     t.text "description"
     t.string "furnished"
     t.string "type_advert"
