@@ -1,0 +1,133 @@
+.titre_show {
+font-family: 'Fira Sans', sans-serif;
+font-weight: 400;
+font-size: 40px;
+text-align: center;
+color: #6D7275;
+padding-top: 50px;
+}
+.result {
+height : 550px;
+width : 1220px;
+}
+.result_show {
+display:flex;
+flex-direction: column;
+justify-content:space-between;
+align-items:center;
+width: 30%;
+height: 550px;
+}
+
+.text-btn-show {
+  vertical-align: center;
+
+}
+.btn_show {
+display:flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.btn-rouge {
+  text-align: center;
+  color: #CC3E28 !important;
+  padding : 8px;
+  border-radius: 8px;
+  border: 1px solid;
+width: 152px;
+left: 150px;
+top: 200px;
+margin-top: 0px;
+margin-right: 20px;
+margin-left: 20px;
+
+}
+
+.btn-rouge:hover {
+  text-align: center;
+  color: #CC3E28 !important;
+  padding : 8px;
+  border-radius: 8px;
+  border: 1px solid;
+  width: 152px;
+left: 150px;
+top: 200px;
+margin-top: 0px;
+margin-right: 20px;
+margin-left: 20px;
+text-decoration: none;
+background-color: #FAEDEB;
+}
+
+.btn-rouge:hover .coeur {
+  background-image: url("heart-full.svg");
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
+  height: 22px;
+  width: 22px;
+  top: 4px;
+  left: 3px;
+
+}
+
+.coeur {
+  background-image: url("heart-empty.svg");
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
+  height: 22px;
+  width: 24px;
+  top: 4px;
+  left: 2px;
+}
+.btn-transparent-grey {
+width: 152px;
+left: 150px;
+top: 200px;
+}
+.infos_principales_show {
+font-size:32px;
+color: #E0442C;
+}
+.nbre_chambres_show {
+color: #3A4247;
+font-size: 24px;
+}
+.price_show {
+color: #3A4247;
+font-size:40px;
+font-weight: bold;
+}
+.carousel-inner {
+margin: auto !important;
+width: 100% !important;
+height: 100% !important;
+
+}
+.item.active {
+margin: auto !important;
+width: 100% !important;
+height: 100% !important;
+}
+
+.carousel_show {
+border-radius: 5px;
+height: 100%;
+width:70%;
+}
+* {
+box-sizing: content-box;
+}
+
+.carousel-inner> .item> img, .carousel-inner > .item > a > img {
+margin: auto !important;
+width: 100% !important;
+}
+
+.img_carousel_show {
+height: 600px;
+display: flex;
+justify-content:center;
+margin:0 auto !important;}
