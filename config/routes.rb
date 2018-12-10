@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: [:index]
   resources :searches, only: [:index, :create]
+
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

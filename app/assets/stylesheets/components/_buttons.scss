@@ -98,33 +98,6 @@
   left: 3px;
 }
 
-.white-circle {
-  text-align: center;
-  background-color: white;
-  padding:3px;
-  border-radius: 50%;
-}
 
-.heart {
-  background-image: url("heart-empty.svg");
-  background-repeat: no-repeat;
-  display: inline-block;
-  position: relative;
-  height: 30px;
-  width: 24px;
-  top: 15px;
-  left: 2px;
-}
-
-.white-circle:hover .heart {
-  background-image: url("heart-full.svg");
-  background-repeat: no-repeat;
-  display: inline-block;
-  position: relative;
-  height: 30px;
-  width: 24px;
-  top: 15px;
-  left: 2px;
-}
 
 
