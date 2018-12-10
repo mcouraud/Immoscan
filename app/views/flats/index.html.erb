@@ -79,9 +79,20 @@
     <% @flats.each_with_index do |flat, index| %>
     <% myCarousel = "myCarousel#{index.to_s}" %>
     <% myCarousel_href = "#myCarousel#{index.to_s}" %>
-    <a class="white-circle margin-left-10"> <span class="heart"> </span> </a>
+    <%= link_to flat_favorites_path(flat), class: "white-circle margin-left-10", method: :post  do %>
+      <span class="<% current_user.favorites.each do |f| %>
+          <%if f.flat == flat %>
+          <%= 'full-heart' %>
+          <% else %>
+          <%= 'empty-heart' %>
+          <% end %>
+        <% end %>">
+      </span>
+    <% end %>
+     <!-- <span class="heart"> </span> -->
     <div class="card">
       <div class="card-picture">
+         <% if flat.photos != []  %>
         <div id= <%= myCarousel %> class="carousel slide" data-ride="carousel" data-interval="false">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -110,7 +121,13 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span class="sr-only">Next</span>
           </a>
+          <% else  %>
+          <div class="card picture">
+          <p> Aucune photo disponible</p>
+          </div>
+          <% end %>
         </div>
+
       </div>
       <div class="card-informations">
         <div class="card-title">

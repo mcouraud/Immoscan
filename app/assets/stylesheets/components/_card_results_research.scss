@@ -75,7 +75,7 @@
   border-radius: 50%;
 }
 
-.heart {
+.empty-heart {
   z-index:200 !important;
   left: 2px;
   background-image: url("heart-empty.svg");
@@ -87,7 +87,19 @@
   top: 15px;
 }
 
-.white-circle:hover .heart {
+.white-circle:hover .empty-heart {
+  z-index:200 !important;
+  top: 15px;
+  left: 2px;
+  background-image: url("heart-full.svg");
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
+  height: 30px;
+  width: 24px;
+}
+
+.full-heart {
   z-index:200 !important;
   top: 15px;
   left: 2px;

@@ -1,2 +1,65 @@
-<h1>Favorites#index</h1>
-<p>Find me in app/views/favorites/index.html.erb</p>
+<h2>Mes Favoris</h2>
+<% @favorites.each_with_index do |favorite, index| %>
+    <% myCarousel = "myCarousel#{index.to_s}" %>
+    <% myCarousel_href = "#myCarousel#{index.to_s}" %>
+    <a class="white-circle margin-left-10"> <span class="full-heart"> </span> </a>
+    <div class="card">
+      <div class="card-picture">
+        <div id= <%= myCarousel %> class="carousel slide" data-ride="carousel" data-interval="false">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target= <%=myCarousel_href%> data-slide-to="0" class="active"></li>
+            <li data-target= <%=myCarousel_href%> data-slide-to="1"></li>
+            <li data-target= <%=myCarousel_href%> data-slide-to="2"></li>
+          </ol>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner card-picture">
+            <div class="item active">
+              <img src="<%= favorite.flat.photos.first %>" class="card-picture">
+            </div>
+            <div class="item card-picture">
+              <img src="<%= favorite.flat.photos[1]%>" class="card-picture" >
+            </div>
+            <div class="item card-picture">
+              <img src="<%= favorite.flat.photos[2]%>" class="card-picture" >
+            </div>
+          </div>
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href=<%=myCarousel_href%> data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href=<%=myCarousel_href%> data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="card-informations">
+        <div class="card-title">
+          <p> Appartement à <%= favorite.flat.city %> (<%= favorite.flat.zipcode %>)</p>
+        </div>
+        <div class="infos">
+          <p> <span> T<%=favorite.flat.nb_rooms%> </span>
+          <span><%=favorite.flat.surface_ground%>m² </span> </p>
+        </div>
+        <div class="bedrooms">
+          <%if favorite.flat.nb_bedrooms > 1 %>
+          <p> <%= favorite.flat.nb_bedrooms %> chambres </p>
+          <% else %>
+          <p> <%= favorite.flat.nb_bedrooms %> chambre </p>
+          <% end %>
+        </div>
+        <div class="price">
+          <p><strong> <%=favorite.flat.price%>€ </strong>
+           <!--  <% if params[:rent_or_buy] == "louer" %>
+            / mois
+          <% end%> -->
+        </p>
+        </div>
+        <div class="centered-bottom">
+          <a class="btn-green" href="<%= favorite.flat.ad_url %>" target="_blank"> Découvrir</a>
+        </div>
+      </div>
+    </div>
+    <% end %>
