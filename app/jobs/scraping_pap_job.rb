@@ -84,9 +84,12 @@ class ScrapingPapJob < ApplicationJob
         pap_flat_nb_chambre << element.children[3].text.remove('chambre')
       end
 
+      flat_photos = []
       html_doc_flat.search('.img-liquid').each do |element|
-        pap_flat_photo_url << element.children[1].attribute('src')
+        flat_photos << element.children[1].attribute('src').value
       end
+      pap_flat_photo_url << flat_photos
+
 
       html_doc_flat.search('.item-description').each do |element|
         pap_flat_description << element.children.children.children.text
@@ -100,7 +103,20 @@ class ScrapingPapJob < ApplicationJob
     pap_annonce_total = pap_flat_city.zip( pap_flat_zipcode, pap_flat_price, pap_flat_nb_piece, pap_flat_nb_chambre, pap_flat_nb_metre_carre, pap_flat_photo_url, pap_flat_description, pap_flat_item_date, url_flat)
 
     pap_annonce_total.each_with_index do |flat, index|
-      Flat.create!( city: flat[0].to_s, zipcode: flat[1], rent_or_buy: params[:rent_or_buy], price: flat[2].to_i, nb_rooms: flat[3].to_i, nb_bedrooms: flat[4].to_i, surface_ground: flat[5].to_i, :photos => [flat[6]], description: flat[7], ad_url: "https://www.pap.fr#{url_flat[index]}")
+      if Flat.find_or_create_by(ad_url: "https://www.pap.fr#{url_flat[index]}") do |element|
+        element.city = flat[0].to_s
+        element.zipcode = flat[1]
+        element.rent_or_buy = params[:rent_or_buy]
+        element.price = flat[2].to_i
+        element.nb_rooms = flat[3].to_i
+        element.nb_bedrooms = flat[4].to_i
+        element.surface_ground = flat[5].to_i
+        element.photos = flat[6]
+        element.description = flat[7]
+        element.ad_url = "https://www.pap.fr#{url_flat[index]}"
+        element.save!
+      end
     end
   end
+end
 end

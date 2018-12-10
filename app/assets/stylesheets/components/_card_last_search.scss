@@ -1,37 +1,46 @@
-.card_last_search {
+.card_alert {
   width: 359px;
   height: 232px;
-  background-color: #F9F8F8;
-  border-radius: 5px;
-  padding-bottom:15px;
+  background: rgba(250, 250, 250, 0.9);
+  border-radius: 8px;
+  padding:10px;
+  box-shadow: 4px 2px 10px 1px rgba(65, 61, 60, 0.3);
 }
 
+.centered {
+  position: relative;
+  left: 110px;
+  top: 10px ;
+}
 
-.card_alerte_body {
-  width: 100%;
-  height: 80%;
+.bell {
+  position: relative;
+  left: 90px;
+  bottom: 3px;
 }
 
 .colon-left{
   color:#3A4247;
   font-size: 18px;
+  margin: 0px;
 }
 
 .colon_right{
+  position: relative;
   text-align: right;
   color: #E0442C;
   font-size: 18px;
+  bottom: 25px;
+  margin: 0px;
+
 }
 
 .card_alerte_title {
   font-size:22px;
   color-font:#3A4247;
+  margin-bottom: 30px;
 }
 
-.card_alerte_footer {
-  display:flex;
-  flex-direction: row;
-}
 
 .pencil {
   background-image: url("pencil-grey.svg");
