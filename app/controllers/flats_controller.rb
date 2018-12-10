@@ -3,6 +3,7 @@ class FlatsController < ApplicationController
 
   def index
     ScrapingPapJob.perform_now(params)
+    SelogerJob.perform_now(params)
     if params[:city].present?  && params[:price].present? && params[:nb_rooms].present? && params[:rent_or_buy].present?
       @flats = Flat.where('city ILIKE ?', params[:city]).where('price <= ?', params[:price].to_i).where('nb_rooms = ?', params[:nb_rooms].to_i).where('rent_or_buy ILIKE ?', params[:rent_or_buy])
     elsif params[:city].present?  && params[:price].present? && params[:rent_or_buy].present?
