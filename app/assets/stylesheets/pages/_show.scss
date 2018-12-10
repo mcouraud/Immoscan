@@ -4,8 +4,10 @@ font-weight: 400;
 font-size: 40px;
 text-align: center;
 color: #6D7275;
-padding-top: 50px;
+padding-top: 80px;
+padding-bottom: 30px;
 }
+
 .result {
 height : 550px;
 width : 1220px;
@@ -87,6 +89,16 @@ width: 152px;
 left: 150px;
 top: 200px;
 }
+
+#card-partage {
+  height: 40px;
+  width: 100px;
+  position: absolute;
+  top: 55px;
+  right: 30px;
+
+}
+
 .infos_principales_show {
 font-size:32px;
 color: #E0442C;
@@ -131,3 +143,11 @@ height: 600px;
 display: flex;
 justify-content:center;
 margin:0 auto !important;}
+
+.btn-contact {
+position: fixed;
+    width: 200px;
+    height: 30px;
+    right: 5px;
+    top: 550px;
+}
