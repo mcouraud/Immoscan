@@ -69,6 +69,7 @@ class SelogerJob < ApplicationJob
         element.surface_housing = flat[5].to_i
         element.photos = flat[6]
         element.description = flat[7]
+        element.website_source = "seloger.com"
         element.ad_url = "#{flat_url[index]}"
         element.save!
       end

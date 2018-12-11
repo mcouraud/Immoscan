@@ -113,6 +113,7 @@ class ScrapingPapJob < ApplicationJob
         element.surface_ground = flat[5].to_i
         element.photos = flat[6]
         element.description = flat[7]
+        element.website_source = "pap.fr"
         element.ad_url = "https://www.pap.fr#{url_flat[index]}"
         element.save!
       end

@@ -3,7 +3,7 @@
 }
 
 .flex-container {
-  background-color: $white;
+  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -29,10 +29,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
   height: 550px;
   border-radius: 8px;
   margin: auto;
+  background-color: white;
 }
 
 .margin-left-right-10 {
@@ -129,42 +131,24 @@ color: #E0442C;
   font-size:40px;
   font-weight: bold;
 }
-.carousel-inner {
-/*  margin: auto !important;
-  width: 100% !important;
-  height: 100% !important;*/
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-around !important;
+
+#myCarousel {
+  width: 100%;
 }
 
-.item.active {
-margin: auto !important;
-width: 100% !important;
-height: 100% !important;
+.carousel-inner > .item > img, .carousel-inner > .item > a > img, .item > .active > img {
+  display: inline-block;
+  border-radius: 8px;
+  max-height: 500px;
 }
 
-.carousel_show {
-  border-radius: 5px;
-  height: 100%;
-  width:100%;
+.btn-annonce {
+  z-index: 1000;
 }
 
-
-/*.carousel-inner> .item> img, .carousel-inner > .item > a > img {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-around !important;
-  margin: 0 auto !important;
-  align-self: center !important;
-}*/
-
-/*.img_carousel_show {
-  height: 600px;
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content:center !important;
-  height: auto !important;
+/*.item.active {
   margin: auto !important;
-  align-self: center !important;
+  width: 100% !important;
+  height: 100% !important;
 }*/
+
