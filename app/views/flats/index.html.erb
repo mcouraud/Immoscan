@@ -79,9 +79,26 @@
     <% @flats.each_with_index do |flat, index| %>
     <% myCarousel = "myCarousel#{index.to_s}" %>
     <% myCarousel_href = "#myCarousel#{index.to_s}" %>
-    <a class="white-circle margin-left-10"> <span class="heart"> </span> </a>
+    <%= link_to flat_favorites_path(flat), class: "white-circle margin-left-10", method: :post  do %>
+      <span class= "<% if user_signed_in? && current_user.favorites.count == 0 %>
+          <%= "empty-heart" %>
+          <% elsif user_signed_in? %>
+          <% current_user.favorites.each do |f| %>
+            <% if f.flat == flat %>
+            <%= "full-heart" %>
+            <% else %>
+            <%= "empty-heart" %>
+            <% end %>
+          <% end %>
+          <% else %>
+          <%= "empty-heart" %>
+        <% end %>">
+      </span>
+    <% end %>
+     <!-- <span class="heart"> </span> -->
     <div class="card">
       <div class="card-picture">
+         <% if flat.photos != []  %>
         <div id= <%= myCarousel %> class="carousel slide" data-ride="carousel" data-interval="false">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -110,7 +127,32 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span class="sr-only">Next</span>
           </a>
+          <% else  %>
+          <div id= <%= myCarousel %> class="carousel slide" data-ride="carousel" data-interval="false">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target= <%=myCarousel_href%> data-slide-to="0" class="active"></li>
+            <li data-target= <%=myCarousel_href%> data-slide-to="1"></li>
+            <li data-target= <%=myCarousel_href%> data-slide-to="2"></li>
+          </ol>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner card-picture">
+            <div class="item active">
+              <p class="card-picture"> Aucune photo disponible</p>
+            </div>
+          </div>
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href=<%=myCarousel_href%> data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href=<%=myCarousel_href%> data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          <% end %>
         </div>
+
       </div>
       <div class="card-informations">
         <div class="card-title">
@@ -120,13 +162,13 @@
           <p> <span> T<%=flat.nb_rooms%> </span>
           <span><%=flat.surface_ground%>m² </span> </p>
         </div>
-        <div class="bedrooms">
-          <%if flat.nb_bedrooms > 1 %>
-          <p> <%= flat.nb_bedrooms %> chambres </p>
-          <% else %>
-          <p> <%= flat.nb_bedrooms %> chambre </p>
+            <%if flat.nb_bedrooms.nil? || flat.nb_bedrooms == 0 %>
+            <p></p>
+          <%else %>
+            <div class="bedroom">
+              <%= flat.nb_bedrooms %> <%= "chambre".pluralize(flat.nb_bedrooms) %>
+            </div>
           <% end %>
-        </div>
         <div class="price">
           <p><strong> <%=flat.price%>€ </strong>
             <% if params[:rent_or_buy] == "louer" %>
@@ -134,7 +176,7 @@
           <% end%></p>
         </div>
         <div class="centered-bottom">
-          <a class="btn-green" href="<%= flat.ad_url %>" target="_blank"> Découvrir</a>
+          <%= link_to "Découvrir", flat_path(flat), class: "btn-green" %>
         </div>
       </div>
     </div>
