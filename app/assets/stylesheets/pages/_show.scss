@@ -3,7 +3,7 @@
 }
 
 .flex-container {
-  background-color: $white;
+  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -34,7 +34,7 @@
   height: 550px;
   border-radius: 8px;
   margin: auto;
-  background-color: #EDECEC;
+  background-color: white;
 }
 
 .margin-left-right-10 {
@@ -139,15 +139,12 @@ color: #E0442C;
 .carousel-inner > .item > img, .carousel-inner > .item > a > img, .item > .active > img {
   display: inline-block;
   border-radius: 8px;
-  max-height: 550px;
+  max-height: 500px;
 }
 
-/*.btn-annonce {
-  bottom: 50px;
-  right: 10px;
-  position: fixed;
-  z-index: 200;
-}*/
+.btn-annonce {
+  z-index: 1000;
+}
 
 /*.item.active {
   margin: auto !important;
