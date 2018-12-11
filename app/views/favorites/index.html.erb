@@ -43,13 +43,13 @@
           <p> <span> T<%=favorite.flat.nb_rooms%> </span>
           <span><%=favorite.flat.surface_ground%>m² </span> </p>
         </div>
-        <div class="bedrooms">
-          <%if favorite.flat.nb_bedrooms > 1 %>
-          <p> <%= favorite.flat.nb_bedrooms %> chambres </p>
-          <% else %>
-          <p> <%= favorite.flat.nb_bedrooms %> chambre </p>
+          <%if favorite.flat.nb_bedrooms.nil? || favorite.flat.nb_bedrooms == 0  %>
+            <p></p>
+          <%else%>
+            <div class="bedroom">
+              <%= favorite.flat.nb_bedrooms %> <%= "chambre".pluralize(favorite.flat.nb_bedrooms) %>
+            </div>
           <% end %>
-        </div>
         <div class="price">
           <p><strong> <%=favorite.flat.price%>€ </strong>
            <!--  <% if params[:rent_or_buy] == "louer" %>

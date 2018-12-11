@@ -162,13 +162,13 @@
           <p> <span> T<%=flat.nb_rooms%> </span>
           <span><%=flat.surface_ground%>m² </span> </p>
         </div>
-        <div class="bedrooms">
-          <%if flat.nb_bedrooms > 1 %>
-          <p> <%= flat.nb_bedrooms %> chambres </p>
-          <% else %>
-          <p> <%= flat.nb_bedrooms %> chambre </p>
+            <%if flat.nb_bedrooms.nil? || flat.nb_bedrooms == 0 %>
+            <p></p>
+          <%else %>
+            <div class="bedroom">
+              <%= flat.nb_bedrooms %> <%= "chambre".pluralize(flat.nb_bedrooms) %>
+            </div>
           <% end %>
-        </div>
         <div class="price">
           <p><strong> <%=flat.price%>€ </strong>
             <% if params[:rent_or_buy] == "louer" %>
