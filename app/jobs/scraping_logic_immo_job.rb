@@ -128,7 +128,7 @@ class ScrapingLogicImmoJob < ApplicationJob
         # element.surface_housing = flat[4].to_i
         element.photos = [flat[5]]
         element.description = flat[6]
-        element.website_source = "Logic-immo"
+        element.website_source = "logic-immo.com"
         element.ad_url = "#{ad_urls[index]}"
         element.save!
       end

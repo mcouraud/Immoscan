@@ -15,6 +15,15 @@
 .card-picture {
   height: 280px;
   width: 380px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  display: inline-block;
   border-radius: 8px;
 }
 
@@ -24,11 +33,11 @@
 
 
 .left {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.0001) 100%) !important;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.0001) 0%) !important;
 }
 
 .right {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.0001) 100%) !important;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.0001) 0%) !important;
 }
 
 .card-informations {

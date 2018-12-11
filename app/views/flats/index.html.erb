@@ -107,15 +107,15 @@
             <li data-target= <%=myCarousel_href%> data-slide-to="2"></li>
           </ol>
           <!-- Wrapper for slides -->
-          <div class="carousel-inner card-picture">
+          <div class="carousel-inner">
             <div class="item active">
-              <img src="<%= flat.photos.first %>" class="card-picture">
+              <img src="<%= flat.photos.first %>" style="max-height: 280px">
             </div>
-            <div class="item card-picture">
-              <img src="<%= flat.photos[1]%>" class="card-picture" >
+            <div class="item">
+              <img src="<%= flat.photos[1]%>" style="max-height: 280px">
             </div>
-            <div class="item card-picture">
-              <img src="<%= flat.photos[2]%>" class="card-picture" >
+            <div class="item">
+              <img src="<%= flat.photos[2]%>" style="max-height: 280px">
             </div>
           </div>
           <!-- Left and right controls -->
