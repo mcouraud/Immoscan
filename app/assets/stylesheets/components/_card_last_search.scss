@@ -43,7 +43,7 @@
 
 
 .pencil {
-  background-image: url("pencil-grey.svg");
+  background-image: url("https://res.cloudinary.com/mcouraud/image/upload/v1544534381/pencil-grey.svg");
   background-repeat: no-repeat;
 
   padding: 15px;
@@ -52,7 +52,7 @@
 }
 
 .pencil:hover {
-  background-image: url("pencil-red.svg");
+  background-image: url("https://res.cloudinary.com/mcouraud/image/upload/v1544534381/pencil-red.svg");
   background-repeat: no-repeat;
 
   padding: 15px;
@@ -61,7 +61,7 @@
 }
 
 .trash {
-  background-image: url("trash-grey.svg");
+  background-image: url("https://res.cloudinary.com/mcouraud/image/upload/v1544534383/trash-grey.svg");
   background-repeat: no-repeat;
   padding: 15px;
   display:inline-block;
@@ -69,7 +69,7 @@
 }
 
 .trash:hover {
-  background-image: url("trash-red.svg");
+  background-image: url("https://res.cloudinary.com/mcouraud/image/upload/v1544534384/trash-red.svg");
   padding: 15px;
   display:inline-block;
 }
