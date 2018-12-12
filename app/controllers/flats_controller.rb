@@ -12,12 +12,13 @@ class FlatsController < ApplicationController
       flash[:alert] = "Veuillez choisir une localisation"
       redirect_to root_path
     end
+    @flats = @flats.order(price: :desc)
   end
 
   def scraping
-    # ScrapingPapJob.perform_later(params.to_json)
+    ScrapingPapJob.perform_later(params.to_json)
     SelogerJob.perform_later(params.to_json)
-    ScrapingLogicImmoJob.perform_later(params.to_json)
+    ScrapingLogicImmoJob.perform_now(params.to_json)
   end
 
   def show

@@ -1,32 +1,31 @@
 
 <div class="row">
-  <% if @flat.rent_or_buy = "louer" %>
+  <% if @flat.rent_or_buy == "louer" %>
     <h2 class="titre_show"> Location <%= @flat.city.capitalize%> <%= @flat.zipcode %> </h2>
   <% else %>
-    <h2 class="titre_show"> Achat <%= @flat.city.capitalize%> <%= @flat.zipcode %> </h2>
+    <h2 class="titre_show"> Vente <%= @flat.city.capitalize%> <%= @flat.zipcode %> </h2>
   <% end %>
 </div>
 
 <div class= "flex-container">
   <div class="flex-item-infos">
     <div class ="btn_show">
-      <a href="" class="btn-transparent-red">
-        <span class="<% if user_signed_in? && current_user.favorites.count == 0 %>
+      <%= link_to flat_favorites_path(@flat), class: "btn-transparent-red margin-left-10", method: :post  do %>
+      <span class= " <% if user_signed_in? && current_user.favorites.count == 0 %>
           <%= "empty-heart" %>
           <% elsif user_signed_in? %>
-            <% current_user.favorites.each do |f| %>
-              <% if f.flat == @flat %>
-                <%= "full-heart" %>
-              <% else %>
-                <%= "empty-heart" %>
-              <% end %>
-            <% end %>
-          <% else %>
+          <% current_user.favorites.each do |f| %>
+            <% if f.flat == @flat %>
+            <%= "full-heart" %>
+            <% else %>
             <%= "empty-heart" %>
-          <% end %>">
-        </span>
-         Favoris
-      </a>
+            <% end %>
+          <% end %>
+          <% else %>
+          <%= "empty-heart" %>
+        <% end %>">
+    </span> Favoris
+    <% end %>
       <span class="margin-left-right-10"></span>
       <a href="" class="btn-transparent-grey">
         <span> <img src="https://res.cloudinary.com/mcouraud/image/upload/v1544534379/connexion.svg" alt=""> </span>
@@ -54,7 +53,7 @@
     </div>
     <div class="price_surface_show">
       <% if @flat.rent_or_buy == "acheter" && !@flat.surface_housing.nil? %>
-      <%= @flat.price / @flat.surface_housing %> € / m² %>
+      <%= @flat.price / @flat.surface_housing %> € / m²
       <% else %>
       <% end %>
     </div>

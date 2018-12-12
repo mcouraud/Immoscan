@@ -44,19 +44,20 @@ class ScrapingLogicImmoJob < ApplicationJob
       break unless logic_immo_scrap_city_string.blank?
     end
 
-    if params[:rent_or_buy] = "louer"
+    if params[:rent_or_buy] == "louer"
       vente_location = "location"
-    else
+    else params[:rent_or_buy] == "acheter"
       vente_location = "vente"
     end
 
-    if params[:rent_or_buy] = "louer"
+    if params[:rent_or_buy] == "louer"
       logic_immo_min_price = 800
-    else params[:rent_or_buy] = "acheter"
+    else params[:rent_or_buy] == "acheter"
       logic_immo_min_price = 50000
     end
 
     logic_immmo_url_recup_annonce = "http://www.logic-immo.com/#{vente_location}-immobilier-#{logic_immo_scrap_city_string.first}-tous-codes-postaux,#{logic_immo_scrap_city_id.first}_#{logic_immo_scrap_level_id.first}/options/groupprptypesids=1,2,7/pricemin=#{logic_immo_min_price}"
+
     html_file_flat = open(logic_immmo_url_recup_annonce).read
     html_doc_flat = Nokogiri::HTML(html_file_flat)
 
@@ -75,8 +76,7 @@ class ScrapingLogicImmoJob < ApplicationJob
       end
 
       html_doc_scrap_flat.css(".main-price").each do |element|
-        logic_immo_flat_price << element.text.remove('€')
-
+        logic_immo_flat_price << element.text.remove('€').remove(' ')
       end
 
       html_doc_scrap_flat.css(".col-xs-7 > div:nth-child(1) > p:nth-child(1)").each do |element|
