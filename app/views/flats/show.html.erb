@@ -33,11 +33,11 @@
         Partager
       </a>
     </div>
-    <div class="fb-share-button" data-href="<%=flat_path(@flat)%>" data-layout="button" data-size="small" data-mobile-iframe="true">
+    <div class="fb-share-button" data-href="https//www.immmoscan.co" data-layout="button" data-size="small" data-mobile-iframe="true">
       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fflats%2F27&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Partager</a>
     </div>
     <div class="infos_principales_show">
-      <%= @flat.nb_rooms %> <%= "pièce".pluralize(@flat.nb_rooms) %> | <%= @flat.surface_ground %> m²
+      <%= @flat.nb_rooms %> <%= "pièce".pluralize(@flat.nb_rooms) %> | <%= @flat.surface_housing %> m²
     </div>
     <%if @flat.nb_bedrooms.nil? || @flat.nb_bedrooms == 0%>
       <p></p>
@@ -53,8 +53,8 @@
       <% end %>
     </div>
     <div class="price_surface_show">
-      <% if @flat.rent_or_buy == "acheter" && !@flat.surface_ground.nil? %>
-      <%= @flat.price / @flat.surface_ground %> € / m² %>
+      <% if @flat.rent_or_buy == "acheter" && !@flat.surface_housing.nil? %>
+      <%= @flat.price / @flat.surface_housing %> € / m² %>
       <% else %>
       <% end %>
     </div>
@@ -95,7 +95,7 @@
         </a>
       </div>
     <% end %>
-    <%= link_to "Voir l'annonce sur " +  @flat.website_source.to_s + " →" , @flat.ad_url, class: "btn-red btn-annonce"%>
+    <%= link_to "Voir l'annonce sur " +  @flat.website_source.to_s + " →" , @flat.ad_url, class: "btn-red btn-annonce", target: "_blank"%>
   </div>
 </div>
 
@@ -107,6 +107,7 @@
   js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.2';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
 
 <div class="container">
 

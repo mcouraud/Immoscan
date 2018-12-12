@@ -3,9 +3,11 @@ require 'nokogiri'
 require 'active_support/all'
 
 class SelogerJob < ApplicationJob
-  # queue_as :default
+  queue_as :default
 
   def perform(params)
+
+    params = eval(params)
 #  recuperation des params de la query
     city_query = City.select { |m| m.name.downcase == params[:city].downcase }
 
