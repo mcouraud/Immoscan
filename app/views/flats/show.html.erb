@@ -50,13 +50,14 @@
       <% if @flat.rent_or_buy == "louer" %> / mois
       <% else %>
       <% end %>
-    </div>
-    <div class="price_surface_show">
+    <span class="price_surface_show">
       <% if @flat.rent_or_buy == "acheter" && !@flat.surface_housing.nil? %>
       <%= @flat.price / @flat.surface_housing %> € / m²
       <% else %>
       <% end %>
+    </span>
     </div>
+
     <div class="link_show">
       <%=  @flat.website_source %>
     </div>
