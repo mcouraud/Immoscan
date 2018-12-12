@@ -1,4 +1,8 @@
+<!-- Code pour la meta -->
+<% content_for :meta_title, "Ce bien immobilier est sur #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @flat.description %>
 
+<!-- Code de la show -->
 <div class="row">
   <% if @flat.rent_or_buy == "louer" %>
     <h2 class="titre_show"> Location <%= @flat.city.capitalize%> <%= @flat.zipcode %> </h2>
