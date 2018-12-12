@@ -360,25 +360,27 @@
 	<div class="post right"></div>
 	<div class="pane">
 		<div class="headline sign-text-color">
-			404
+			503
 		</div>
 		<div class="context sign-text-color">
-			Olala, la page n'existe pas !<br>
+			Roh, on dirait un souci serveur !<br>
 		</div>
 	</div>
 </div>
 <div class="text-container">
 	<div class="headline secondary-text-color">
-		404
+		503
 	</div>
-	<div class="context primary-text-color">
-		<p>
-			Retour sur la page d'accueil ?<br>
-			Ou bien envoyez nous un mail si vous pensez que quelque chose ne fonctionne pas.
-		</p>
-	</div>
+  <div class="context primary-text-color">
+
+    <p>
+      Vous pouvez retourner sur la page d'accueil.
+      Si vous pensez que quelque chose fonctionne mal, envoyez nous un email.
+    </p>
+
+
+  </div>
 	<div class="buttons-container">
-		<a class="border-button" href="http://immoscan.co" target="_blank"><span class="fa fa-home"></span>Accueil</a>
 		<a class="border-button" href="mailto:contact@immoscan" target="_blank"><span class="fa fa-warning"></span> Signaler le souci</a>
 	</div>
 </div>
@@ -488,7 +490,7 @@
        });
 
      };
-     var ep = new ErrorPage('body', "404", "sign");
+     var ep = new ErrorPage('body', "503", "sign");
      ep.initialize();
 
      // hack to make sure content stays centered >_<
