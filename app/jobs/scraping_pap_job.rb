@@ -4,14 +4,13 @@
   require 'active_support/all'
 
 class ScrapingPapJob < ApplicationJob
-  # queue_as :default
+  queue_as :default
 
   def perform(params)
     city_id = []
     city_string = []
     flat_annonce_url = []
     url_flat = []
-
     pap_flat_price = []
     pap_flat_address = []
     pap_flat_city = []
@@ -23,9 +22,11 @@ class ScrapingPapJob < ApplicationJob
     pap_flat_description = []
     pap_flat_item_date = []
 
-    ville = params[:city]
+    output = eval(params)
 
-    if params[:rent_or_buy] == "louer"
+    ville = output[:city]
+
+    if output[:rent_or_buy] == "louer"
       achat_ou_location = "locations"
     else
       achat_ou_location = "vente"
@@ -106,7 +107,7 @@ class ScrapingPapJob < ApplicationJob
       if Flat.find_or_create_by(ad_url: "https://www.pap.fr#{url_flat[index]}") do |element|
         element.city = flat[0].to_s
         element.zipcode = flat[1]
-        element.rent_or_buy = params[:rent_or_buy]
+        element.rent_or_buy = output[:rent_or_buy]
         element.price = flat[2].to_i
         element.nb_rooms = flat[3].to_i
         element.nb_bedrooms = flat[4].to_i
