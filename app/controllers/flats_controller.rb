@@ -16,7 +16,7 @@ class FlatsController < ApplicationController
   end
 
   def scraping
-    ScrapingPapJob.perform_later(params.to_json)
+    # ScrapingPapJob.perform_later(params.to_json)
     SelogerJob.perform_later(params.to_json)
     ScrapingLogicImmoJob.perform_now(params.to_json)
   end
