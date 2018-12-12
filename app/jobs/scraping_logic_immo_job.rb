@@ -21,6 +21,8 @@ class ScrapingLogicImmoJob < ApplicationJob
     logic_immo_final_flat = []
     ad_urls = []
 
+    params = eval(params)
+
     ville = params[:city]
 
     logic_immo_url = 'http://www.logic-immo.com/asset/t9/getLocalityT9.php?site=fr&lang=fr&json="' + "#{ville}" + '"'
@@ -49,7 +51,7 @@ class ScrapingLogicImmoJob < ApplicationJob
     end
 
     if params[:rent_or_buy] = "louer"
-      logic_immo_min_price = 400
+      logic_immo_min_price = 800
     else params[:rent_or_buy] = "acheter"
       logic_immo_min_price = 50000
     end
@@ -83,6 +85,7 @@ class ScrapingLogicImmoJob < ApplicationJob
 
       html_doc_scrap_flat.xpath("/html/body/div[2]/section[1]/div/div[2]/div[1]/div/article/div/header/div[1]/div[2]/p/span[1]").each do |element|
         logic_immo_flat_nb_metre_carre << element.text
+        # raise if index > 5
       end
 
       html_doc_scrap_flat.xpath("/html/body/div[2]/section[1]/div/div[2]/div[1]/div/article/div/header/div[1]/div[2]/p/span[2]/span").each do |element|
@@ -90,12 +93,13 @@ class ScrapingLogicImmoJob < ApplicationJob
       end
 
       flat_photos = []
-      flat_photos_final = []
       html_doc_scrap_flat.xpath("/html/body/div[2]/section[1]/div/div[2]/div[1]/div/article/div/div/section/div[2]/div/div/div/div/ul/li").each do |element|
+        if !element.children.children[0].attribute('src').nil?
         flat_photos << element.children.children[0].attribute('src').value
-        flat_photos_final = flat_photos.map {|url| url.gsub!('75x75','800x600') }
+        flat_photos.map {|url| url.gsub!('75x75','800x600') }
+        end
       end
-      logic_immo_flat_photo_url << flat_photos_final
+      logic_immo_flat_photo_url << flat_photos
 
       html_doc_scrap_flat.css(".offer-description-text > p:nth-child(3)").each do |element|
         logic_immo_flat_description << element.text
@@ -111,7 +115,7 @@ class ScrapingLogicImmoJob < ApplicationJob
         element.rent_or_buy = params[:rent_or_buy]
         element.price = flat[2].to_i
         element.nb_rooms = flat[3].to_i
-        # element.surface_housing = flat[4].to_i
+        element.surface_housing = flat[4].to_i
         element.photos = flat[5]
         element.description = flat[6]
         element.website_source = "logic-immo.com"
