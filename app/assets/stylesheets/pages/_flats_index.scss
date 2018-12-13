@@ -1,7 +1,10 @@
+.split-parent {
+  display: flex;
+  height: calc(100vh - 50px);
+}
+
 .split {
   height: 100%;
-  z-index: 1;
-  top: 0;
   padding-top: 20px;
 }
 
@@ -12,12 +15,10 @@
 }
 
 .criterias {
-  margin-top: 50px;
   left: 0;
   padding-left: 70px;
   width: 40%;
   padding-right: 70px;
-  position: fixed;
 }
 
 .label-index {
@@ -25,17 +26,13 @@
 }
 
 .results{
-  right: 0;
-  margin-left: 500px;
-  margin-top: -600px;
-  margin-right: 0px;
-  padding-top: 0px !important;
   padding-right: 40px;
   padding-left: 20px;
   width: 60%;
+  overflow-y: scroll;
 }
 
-.results  h5 {
+.results h5 {
   margin-bottom: 0px;
 }
 

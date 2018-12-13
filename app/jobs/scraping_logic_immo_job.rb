@@ -80,7 +80,11 @@ class ScrapingLogicImmoJob < ApplicationJob
       end
 
       html_doc_scrap_flat.css(".col-xs-7 > div:nth-child(1) > p:nth-child(1)").each do |element|
-        logic_immo_flat_zipcode << element.text.split(" ").last.remove('(').remove(')')
+        if element.text.include?("/")
+          logic_immo_flat_zipcode << element.text.split("/").first
+        else
+          logic_immo_flat_zipcode << element.text.split(" ").last.remove('(').remove(')')
+        end
       end
 
       html_doc_scrap_flat.xpath("/html/body/div[2]/section[1]/div/div[2]/div[1]/div/article/div/header/div[1]/div[2]/p/span[1]").each do |element|

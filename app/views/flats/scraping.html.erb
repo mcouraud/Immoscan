@@ -1,9 +1,17 @@
 <div style="text-align : center; padding-top: 20px;">
 
-  <h3 > Recherche de votre prochain logement en cours ... </h3>
-  <!--
-  <span class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-  </span> -->
+  <h3> Immo le chat vous déniche les meilleures annonces <span id="loading">.</span> </h3>
+
+
+<script>
+var dots = window.setInterval( function() {
+    var wait = document.getElementById("loading");
+    if ( wait.innerHTML.length > 2 )
+        wait.innerHTML = "";
+    else
+        wait.innerHTML += ".";
+    }, 1000);
+</script>
 
 
   <div class="scraping-loader all-wrap" style="text-align : center; margin-top: 100px;">
@@ -136,7 +144,7 @@
 </div>
 
 <script>
-  setTimeout(redirect, 6000)
+  setTimeout(redirect, 4000)
 
   function redirect() {
     var searchParams = window.location.href.split('?')[1]
